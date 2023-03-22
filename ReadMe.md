@@ -1,114 +1,86 @@
-# Backend Coding
-
-## Introduction
-
-Crerating a Backend API for a simple blog system.
-
-## Score
-
-|Criteria|Score|
-|--------|-----|
-|Clean code / Development|60%|
-|Unit / Integration test|30%|
-|Docker|10%|
+# Steps
+1. clone the repo
+1. open app.env file to change the basic settings like port/db_name
+1. make sure same db_name is used as provided in docker-compose file line 21
+1. use this cmd, where the docker is installed:
+`docker-compose -f docker-compose.yml up`
+1. It will bring up 2 services, postgres and simpleblog service
+1. Sample output can be seen in file Output.txt
 
 
-## Requirement
-
-1. We value a **clean**, **simple** working solution.
-2. The application can be run in **Docker**(10%), candidate can provide `docker-compose.yml` and `start.sh` bash script at the root of the project, which should setup all relevant services/applications.
-3. The solution to be written in Go Lang
-4. Candidates must submit the project as a git repository(we encourage you to commit often with only related changes).
-5. Having **unit/integration** tests is a must(30%).
-6. As we run automated tests on your project, you must comply to the API requirement as stipulated below. You can assume Docker is already installed in the test machine.
-7. Please provide README instruction to setup and run your application on **macos**. 
-
-## Problem Statement
-
-1. Must be a RESTful HTTP API listening to port `8080` (or you can use another port instead and describe in the README)
-2. The API must implement 3 endpoints with path, method, request and response body as specified
-    - One endpoint to create an article (see sample)
-        - To create an article, the API client must provide a title, content and a author (see sample)
-        - The API responds an object containing the status and article id
-
-    - One endpoint to get an article by id (see sample)
-        - An error response should be returned if a client tries to get an article which doesn't exist.
-
-    - One endpoint to list all articles (see sample)
-
-3. The request input should be validated before processing. The server should return proper error response in case validation fails.
-4. A Database must be used (SQL or NoSQL). The DB installation & initialisation must be done in `start.sh`.
-5. All responses must be in json format no matter in success or failure situations.
-
-## Api Interface
-
-You are expected to follow the API specification as follows. Your implementation should not have any deviations on the method, URI path, request and response body. Such alterations may cause our automated tests to fail.
-
-### Task 1 - Create an article
-- Method: `POST`
-- Path: `/articles`
-- Request Body:
-```
-{
-    "title": "Hello World",
-    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    "author": "John",
-}
-```
-- Response Header: `HTTP 201`
-- Response Body:
-```
-{
-    "status": 201,
-    "message": "Success",
-    "data": {
-      "id": <article_id>
+## Testing
+1. Try running the postman for following requests
+### POST:
+	Request: localhost:8083/articles
+	Body: {
+      "id": 1,
+      "title": "DsdasJggeru",
+      "content": "Dhgis is the content of the second blog",
+      "author": "DGegrry Mulligan"
     }
+    Response: 
+    {
+  "data": {
+    "id": 1,
+    "title": "DsdasJggeru",
+    "content": "Dhgis is the content of the second blog",
+    "author": "DGegrry Mulligan"
+  },
+  "message": "Success",
+  "status": 200
 }
-```
 
-### Task 2 - Get article by id
-- Method: `GET`
-- Path: `/articles/<article_id>`
-- Response Header: `HTTP 200`
-- Response Body:
-```
-{
-    "status": 200,
-    "message": "Success",
-    "data": [
-      {
-        "id": <article_id>,
-        "title":<article_title>,
-        "content":<article_content>,
-        "author":<article_author>,
-      }
-    ]
+### Get:(single record)
+	Request: localhost:8083/article/3
+	Response:
+	{
+  "data": {
+    "id": 3,
+    "title": "DsdasJggeru",
+    "content": "Dhgis is the content of the second blog",
+    "author": "DGegrry Mulligan"
+  },
+  "message": "success",
+  "status": 200
 }
-```
+	Request: localhost:8083/article/90
+	Response:
+	{
+  "data": null,
+  "message": "Fail",
+  "status": 404
+}
 
-### Task 3 - Get all article
-- Method: `GET`
-- Path: `/articles`
-- Response Header: `HTTP 200`
-- Response Body:
-```
-{
-    "status": 200,
-    "message": "Success",
-    "data": [
-      {
-        "id": <article_id>,
-        "title":<article_title>,
-        "content":<article_content>,
-        "author":<article_author>,
-      },
-      {
-        "id": <article_id>,
-        "title":<article_title>,
-        "content":<article_content>,
-        "author":<article_author>,
-      }
-    ]
+### GET: (all)
+	localhost:8083/articles
+	Response:
+	{
+  "data": [
+    {
+      "id": 33,
+      "title": "DsdasJggeru",
+      "content": "Dhgis is the content of the second blog",
+      "author": "DGegrry Mulligan"
+    },
+    {
+      "id": 3,
+      "title": "DsdasJggeru",
+      "content": "Dhgis is the content of the second blog",
+      "author": "DGegrry Mulligan"
+    },
+    {
+      "id": 30,
+      "title": "DsdasJggeru",
+      "content": "Dhgis is the content of the second blog",
+      "author": "DGegrry Mulligan"
+    },
+    {
+      "id": 1,
+      "title": "DsdasJggeru",
+      "content": "Dhgis is the content of the second blog",
+      "author": "DGegrry Mulligan"
+    }
+  ],
+  "message": "success",
+  "status": 200
 }
-```
