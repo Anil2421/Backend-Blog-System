@@ -20,67 +20,68 @@
     }
     Response: 
     {
-  "data": {
-    "id": 1,
-    "title": "DsdasJggeru",
-    "content": "Dhgis is the content of the second blog",
-    "author": "DGegrry Mulligan"
-  },
-  "message": "Success",
-  "status": 200
-}
+    "data": {
+        "id": 1,
+        "title": "DsdasJggeru",
+        "content": "Dhgis is the content of the second blog",
+        "author": "DGegrry Mulligan"
+        },
+    "message": "Success",
+    "status": 200
+    }
 
 ### Get:(single record)
 	Request: localhost:8083/article/3
 	Response:
 	{
-  "data": {
-    "id": 3,
-    "title": "DsdasJggeru",
-    "content": "Dhgis is the content of the second blog",
-    "author": "DGegrry Mulligan"
-  },
-  "message": "success",
-  "status": 200
-}
+    "data": 
+        {
+        "id": 3,
+        "title": "DsdasJggeru",
+        "content": "Dhgis is the content of the second blog",
+        "author": "DGegrry Mulligan"
+        },
+    "message": "success",
+    "status": 200
+    }
 	Request: localhost:8083/article/90
 	Response:
 	{
-  "data": null,
-  "message": "Fail",
-  "status": 404
-}
+    "data": null,
+    "message": "Fail",
+    "status": 404
+    }
 
 ### GET: (all)
 	localhost:8083/articles
 	Response:
 	{
-  "data": [
-    {
-      "id": 33,
-      "title": "DsdasJggeru",
-      "content": "Dhgis is the content of the second blog",
-      "author": "DGegrry Mulligan"
-    },
-    {
-      "id": 3,
-      "title": "DsdasJggeru",
-      "content": "Dhgis is the content of the second blog",
-      "author": "DGegrry Mulligan"
-    },
-    {
-      "id": 30,
-      "title": "DsdasJggeru",
-      "content": "Dhgis is the content of the second blog",
-      "author": "DGegrry Mulligan"
-    },
-    {
-      "id": 1,
-      "title": "DsdasJggeru",
-      "content": "Dhgis is the content of the second blog",
-      "author": "DGegrry Mulligan"
+    "data": [
+        {
+        "id": 33,
+        "title": "DsdasJggeru",
+        "content": "Dhgis is the content of the second blog",
+        "author": "DGegrry Mulligan"
+        },
+        {
+        "id": 3,
+        "title": "DsdasJggeru",
+        "content": "Dhgis is the content of the second blog",
+        "author": "DGegrry Mulligan"
+        },
+        {
+        "id": 30,
+        "title": "DsdasJggeru",
+        "content": "Dhgis is the content of the second blog",
+        "author": "DGegrry Mulligan"
+        },
+        {
+        "id": 1,
+        "title": "DsdasJggeru",
+        "content": "Dhgis is the content of the second blog",
+        "author": "DGegrry Mulligan"
+        }
+    ],
+    "message": "success",
+    "status": 200
     }
-  ],
-  "message": "success",
-  "status": 200
-}
