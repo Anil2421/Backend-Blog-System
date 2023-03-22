@@ -5,7 +5,8 @@
 1. use this cmd, where the docker is installed:
 `docker-compose -f docker-compose.yml up`
 1. It will bring up 2 services, postgres and simpleblog service
-1. Sample output can be seen in file Output.txt
+1. Sample output can be seen in file `Output.txt`
+1. Further more we can check the logs of the server inside a container in `./blogs.log` file
 
 
 ## Testing
